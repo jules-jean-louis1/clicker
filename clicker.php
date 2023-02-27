@@ -12,13 +12,20 @@
     <!--Tailwinds-->
     <script src="https://cdn.tailwindcss.com"></script>
     <!--JavaScript-->
-    <script defer src="src/loginregister.js"></script>
+    <script defer src="script/clicker.js"></script>
     <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <title>Clicker</title>
 </head>
 <body>
-<main>
-
-</main>
+    <main>
+        <article>
+            <section>
+                <button id="idClicker" class="p-3 bg-orange-500">Click</button>
+                <button id="plus10Clicker" class="p-3 bg-green-500">+10</button>
+                <button id="resetClicker" class="p-3 bg-red-600">Reset</button>
+                <div id="nbClicks"></div>
+            </section>
+        </article>
+    </main>
 </body>
 </html>
