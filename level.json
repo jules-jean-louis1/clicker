@@ -1,0 +1,12 @@
+[
+  {"id": 0, "label": "Clicker Lent", "ratepersecond": 1, "costInClick": 10},
+  {"id": 1, "label": "Clicker Moyen", "ratepersecond": 5, "costInClick": 50},
+  {"id": 2, "label": "Clicker Rapide", "ratepersecond": 20, "costInClick": 500},
+  {"id": 3, "label": "Hyper Clicker", "ratepersecond": 100, "costInClick": 5000},
+  {"id": 4, "label": "Mega Clicker", "ratepersecond": 350, "costInClick": 20000},
+  {"id": 5, "label": "Giga Clicker", "ratepersecond": 1000, "costInClick": 100000},
+  {"id": 6, "label": "Extraordinary Clicker", "ratepersecond": 6000, "costInClick": 500000},
+  {"id": 7, "label": "Antépénultième Clicker", "ratepersecond": 50000, "costInClick": 10000000},
+  {"id": 8, "label": "Penultimate Clicker", "ratepersecond": 70000, "costInClick": 15000000},
+  {"id": 9, "label": "Un Clicker pour tous les dominés", "ratepersecond": 1000000, "costInClick": 250000000}
+]

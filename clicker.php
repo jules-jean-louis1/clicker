@@ -20,10 +20,9 @@
     <main>
         <article>
             <section>
-                <button id="idClicker" class="p-3 bg-orange-500">Click</button>
-                <button id="plus10Clicker" class="p-3 bg-green-500">+10</button>
-                <button id="resetClicker" class="p-3 bg-red-600">Reset</button>
-                <div id="nbClicks"></div>
+                <button id="clickButton" class="p-2 bg-red-100">Cliquer ici</button>
+                <div id="score">0</div>
+                <div id="levelButtonsContainer"></div>
             </section>
         </article>
     </main>
