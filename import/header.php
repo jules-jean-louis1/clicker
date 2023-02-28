@@ -2,14 +2,14 @@
 ?>
 
 <header>
-    <div id="containerNav">
+    <div id="containerNav" class="flex justify-between mx-8 p-3">
         <div id="logohere">
             <a href="index.php"><img src="" alt="logo"></a>
         </div>
         <div id="navhere">
-            <?php if (isset($_SESSION['login'] != null)) : ?>
+            <?php if (isset($_SESSION['login']) != null) : ?>
             <nav>
-                <ul>
+                <ul class="flex space-x-2">
                     <li>
                         <a href="clicker.php">Clicker</a>
                     </li>
@@ -23,7 +23,7 @@
             </nav>
             <?php else : ?>
             <nav>
-                <ul>
+                <ul class="flex space-x-2">
                     <li>
                         <a href="clicker.php">Clicker</a>
                     </li>
