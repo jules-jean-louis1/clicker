@@ -28,4 +28,17 @@ class Users
             'password' => $password
         ]);
     }
+    public function connectUser($login, $password)
+    {
+        $query = $this->db->prepare("SELECT * FROM utilisateurs WHERE login = :login");
+        $query->execute(['login' => $login]);
+        $result = $query->fetch();
+        if (password_verify($password, $result['password'])) {
+            $_SESSION['id'] = $result['id'];
+            $_SESSION['login'] = $result['login'];
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

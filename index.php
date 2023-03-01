@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -20,9 +21,10 @@
 <main>
     <?php include 'import/header.php' ?>
     <article>
-        <section>
-            <div id="containerFormBtn">
+        <section class="mx-[6%]">
+            <div id="containerFormBtn" class="flex">
                 <button id="RegisterBtn" class="bg-green-300 p-2">Inscription</button>
+                <button id="loginBtn" class="bg-purple-300 p-2">Connexion</button>
             </div>
             <div id="displayFrom"></div>
         </section>

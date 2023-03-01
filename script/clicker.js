@@ -10,6 +10,7 @@ let clickRate = parseInt(localStorage.getItem("clickRate")) || 1;
 // Mettre à jour le texte affiché dans l'élément de score
 score.textContent = clickCount.toString();
 
+
 // Charger les niveaux depuis le fichier JSON
 fetch("level.json")
     .then((response) => response.json())
@@ -19,7 +20,9 @@ fetch("level.json")
             // Créer l'élément de bouton
             const button = document.createElement("button");
             button.innerText = `${level.label} (${level.costInClick} clics)`;
+            button.classList.add("p-2", "m-2", "bg-blue-500", "text-white", "rounded");
             button.addEventListener("click", () => {
+                // Vérifier si le nombre de clics est suffisant pour acheter le niveau
                 if (clickCount >= level.costInClick) {
                     clickCount -= level.costInClick;
                     score.textContent = clickCount.toString();
@@ -46,3 +49,6 @@ setInterval(() => {
     score.textContent = clickCount.toString();
     localStorage.setItem("clickCount", clickCount.toString());
 }, 1000);
+
+
+

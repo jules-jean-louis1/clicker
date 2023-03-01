@@ -1,4 +1,5 @@
 <?php
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -12,17 +13,26 @@
     <!--Tailwinds-->
     <script src="https://cdn.tailwindcss.com"></script>
     <!--JavaScript-->
-    <script defer src="script/clicker.js"></script>
+<!--    <script defer src="script/clicker.js"></script>-->
+    <script defer src="script/clickerv2.js"></script>
     <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <title>Clicker</title>
 </head>
 <body>
+<?php include 'import/header.php'; ?>
     <main>
         <article>
             <section>
-                <button id="clickButton" class="p-2 bg-red-100">Cliquer ici</button>
-                <div id="score">0</div>
-                <div id="levelButtonsContainer"></div>
+                <div class="container">
+                    <h1>Clicker Game</h1>
+                    <h2>Click : <span id="click-count">0</span></h2>
+                    <button id="clicker-btn">Clicker</button>
+                    <div id="shop">
+                        <h2>Shop</h2>
+                        <div id="levels-container"></div>
+                    </div>
+                    <h2>Clicks per second : <span id="click-rate">0</span></h2>
+                </div>
             </section>
         </article>
     </main>
