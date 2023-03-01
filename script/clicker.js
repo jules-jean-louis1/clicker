@@ -1,15 +1,17 @@
 // Récupérer les éléments du DOM
-const clickButton = document.getElementById("clickButton");
-const score = document.getElementById("score");
-const levelButtonsContainer = document.getElementById("levelButtonsContainer");
+const clickButton = document.getElementById("clicker-btn");
+const score = document.getElementById("click-count");
+const clickRateDisplay = document.getElementById("click-rate"); // nouvel élément DOM pour afficher le nombre de clics par seconde
+const levelButtonsContainer = document.getElementById("levels-container");
+const resetBtn = document.getElementById('reset-btn');
 
 // Initialiser les variables de clics et de vitesse de clics
 let clickCount = parseInt(localStorage.getItem("clickCount")) || 0;
 let clickRate = parseInt(localStorage.getItem("clickRate")) || 1;
 
-// Mettre à jour le texte affiché dans l'élément de score
+// Mettre à jour le texte affiché dans l'élément de score et de clics par seconde
 score.textContent = clickCount.toString();
-
+clickRateDisplay.textContent = clickRate.toString();
 
 // Charger les niveaux depuis le fichier JSON
 fetch("level.json")
@@ -29,6 +31,7 @@ fetch("level.json")
                     clickRate += level.ratepersecond;
                     localStorage.setItem("clickCount", clickCount.toString());
                     localStorage.setItem("clickRate", clickRate.toString());
+                    clickRateDisplay.textContent = clickRate.toString(); // mettre à jour le nombre de clics par seconde dans l'affichage
                 }
             });
             // Ajouter le bouton à l'élément de conteneur
@@ -48,7 +51,15 @@ setInterval(() => {
     clickCount += clickRate;
     score.textContent = clickCount.toString();
     localStorage.setItem("clickCount", clickCount.toString());
+    clickRateDisplay.textContent = clickRate.toString(); // mettre à jour le nombre de clics par seconde dans l'affichage
 }, 1000);
 
-
-
+// Ajouter un gestionnaire d'événements de clic pour le bouton de reset
+resetBtn.addEventListener('click', () => {
+    clickCount = 0;
+    clickRate = 1;
+    score.textContent = "0";
+    localStorage.setItem("clickCount", "0");
+    localStorage.setItem("clickRate", "1");
+    clickRateDisplay.textContent = "0"; // remettre à zéro le nombre de clics par seconde dans l'affichage
+});

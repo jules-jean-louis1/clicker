@@ -24,7 +24,7 @@ function displayLevels() {
     levelsData.forEach(level => {
         const levelBtn = document.createElement('button');
         levelBtn.innerText = `${level.label} (Coût: ${level.costInClick})`;
-        levelBtn.classList.add('level-btn');
+        levelBtn.classList.add('bg-blue-500', 'text-white', 'p-2', 'm-2', 'rounded');
 
         levelBtn.addEventListener('click', () => {
             if (clickCount >= level.costInClick) {
