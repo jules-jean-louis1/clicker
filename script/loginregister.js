@@ -17,7 +17,27 @@ btnRegister.addEventListener("click", async (event) => {
            })
               .then((response) => response.json())
                 .then((data) => {
-                    console.log(data);
+                    const displayMessage = document.querySelector("#errorMsg");
+                    if (data.status === "success") {
+                        displayMessage.innerHTML = "Vous êtes bien inscrit";
+                        displayMessage.classList.add("alert-success");
+                        displayMessage.classList.remove("alert-danger");
+                    }
+                    if (data.status === "empty") {
+                        displayMessage.innerHTML = "Veuillez remplir tous les champs";
+                        displayMessage.classList.add("alert-danger");
+                        displayMessage.classList.remove("alert-success");
+                    }
+                    if (data.status === "passwordNotMatch") {
+                        displayMessage.innerHTML = "Les mots de passe ne correspondent pas";
+                        displayMessage.classList.add("alert-danger");
+                        displayMessage.classList.remove("alert-success");
+                    }
+                    if (data.status === "loginExist") {
+                        displayMessage.innerHTML = "Ce login existe déjà";
+                        displayMessage.classList.add("alert-danger");
+                        displayMessage.classList.remove("alert-success");
+                    }
                 });
         });
 });
