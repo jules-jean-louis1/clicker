@@ -1,7 +1,7 @@
 // Récupérer les éléments du DOM
 const clickButton = document.getElementById("clicker-btn");
 const score = document.getElementById("click-count");
-const clickRateDisplay = document.getElementById("click-rate"); // nouvel élément DOM pour afficher le nombre de clics par seconde
+const clickRateDisplay = document.getElementById("click-rate");
 const levelButtonsContainer = document.getElementById("levels-container");
 const resetBtn = document.getElementById('reset-btn');
 
@@ -41,17 +41,19 @@ fetch("level.json")
 
 // Ajouter un gestionnaire d'événements de clic pour le bouton de clic principal
 clickButton.addEventListener("click", () => {
-    clickCount += clickRate;
+    clickCount += 1;
     score.textContent = clickCount.toString();
     localStorage.setItem("clickCount", clickCount.toString());
 });
 
 // Ajouter une fonction de mise à jour des clics par seconde toutes les secondes
 setInterval(() => {
-    clickCount += clickRate;
-    score.textContent = clickCount.toString();
-    localStorage.setItem("clickCount", clickCount.toString());
-    clickRateDisplay.textContent = clickRate.toString(); // mettre à jour le nombre de clics par seconde dans l'affichage
+    if (clickRate > 1) {
+        clickCount += clickRate;
+        score.textContent = clickCount.toString();
+        localStorage.setItem("clickCount", clickCount.toString());
+        clickRateDisplay.textContent = clickRate.toString(); // mettre à jour le nombre de clics par seconde dans l'affichage
+    }
 }, 1000);
 
 // Ajouter un gestionnaire d'événements de clic pour le bouton de reset
@@ -62,4 +64,22 @@ resetBtn.addEventListener('click', () => {
     localStorage.setItem("clickCount", "0");
     localStorage.setItem("clickRate", "1");
     clickRateDisplay.textContent = "0"; // remettre à zéro le nombre de clics par seconde dans l'affichage
+});
+
+// Ajouter un gestionnaire d'événements pour empêcher le comportement par défaut du formulaire de soumission
+document.querySelector('form').addEventListener('submit', (event) => {
+    event.preventDefault();
+});
+
+// Ajouter un gestionnaire d'événements pour empêcher la sélection de texte dans le bouton de clic
+clickButton.addEventListener('mousedown', (event) => {
+    event.preventDefault();
+});
+
+// Ajouter un gestionnaire d'événements pour empêcher la sélection de texte dans les boutons de niveau
+const levelButtons = document.querySelectorAll("#levels-container button");
+levelButtons.forEach((button) => {
+    button.addEventListener('mousedown', (event) => {
+        event.preventDefault();
+    });
 });
