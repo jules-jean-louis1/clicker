@@ -14,7 +14,7 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <!--JavaScript-->
 <!--    <script defer src="script/clicker.js"></script>-->
-    <script defer src="script/clicker.js"></script>
+    <script defer src="script/clickerv3.js"></script>
     <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <title>Clicker</title>
 </head>
@@ -40,7 +40,6 @@ session_start();
                         <h2>Level</h2>
                         <div id="levels-container"></div>
                     </div>
-
                 </div>
             </section>
         </article>
