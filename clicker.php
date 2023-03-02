@@ -14,7 +14,7 @@ session_start();
     <script src="https://cdn.tailwindcss.com"></script>
     <!--JavaScript-->
 <!--    <script defer src="script/clicker.js"></script>-->
-    <script defer src="script/clickerv3.js"></script>
+    <script defer src="script/clickerv2.js"></script>
     <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
     <title>Clicker</title>
 </head>
@@ -27,17 +27,21 @@ session_start();
                     <div class="flex justify-center">
                         <h1>Clicker Game</h1>
                     </div>
-                    <div class="flex flex-col justify-center space-y-3"><h2>
-                            <span id="click-count" class="flex justify-center text-red-600 font-bold">0</span>
+                    <div class="flex flex-col justify-center space-y-3">
+                        <h2>
+                            <span id="click-count" class="flex justify-center text-red-600 font-bold text-4xl">0</span>
                         </h2>
-                        <button id="clicker-btn" class="p-2 rounded-lg bg-purple-500 uppercase font-bold text-2xl text-[#fff]">Clicker Ici!</button>
-                        <button id="reset-btn" class="p-2 rounded-lg bg-red-500">Reset</button>
                         <h2>
                             Clicks par secondes : <span id="click-rate">0</span>
                         </h2>
+                        <button id="clicker-btn" class="p-2 rounded-lg bg-purple-500 uppercase font-bold text-2xl text-[#fff]">Clicker Ici!</button>
+                        <button id="reset-btn" class="p-2 rounded-lg bg-red-500">Reset</button>
+
                     </div>
-                    <div id="shop">
-                        <h2>Level</h2>
+                    <div id="shop" class="flex flex-col justify-center">
+                        <h2>
+                            <span class="flex justify-center">Level</span>
+                        </h2>
                         <div id="levels-container"></div>
                     </div>
                 </div>

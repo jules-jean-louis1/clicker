@@ -1,72 +1,122 @@
-// Sélectionne les éléments HTML
-const clickerBtn = document.getElementById('clicker-btn');
-const clickCountEl = document.getElementById('click-count');
-const clickRateEl = document.getElementById('click-rate');
-const levelsContainer = document.getElementById('levels-container');
+// Récupération des éléments du DOM
+const clickCountEl = document.getElementById("click-count");
+const clickerBtn = document.getElementById("clicker-btn");
+const resetBtn = document.getElementById("reset-btn");
+const clickRateEl = document.getElementById("click-rate");
+const levelsContainer = document.getElementById("levels-container");
 
-// Variables globales
+// Variables de jeu
 let clickCount = 0;
 let clickRate = 0;
-let levelsData = [];
+let clickInterval;
+let levels = [];
 
-// Charge les données des niveaux depuis le fichier JSON
-fetch('level.json')
-    .then(response => response.json())
-    .then(data => {
-        levelsData = data;
-        displayLevels();
+// Fonction pour mettre à jour l'affichage
+function updateDisplay() {
+// Mise à jour du nombre de clics
+    clickCountEl.textContent = clickCount;
+
+// Mise à jour du taux de clics par seconde
+    clickRateEl.textContent = Math.floor(clickRate);
+
+// Mise à jour des boutons de niveau
+    levels.forEach((level) => {
+        const levelBtn = document.getElementById(`level-${level.id}`);
+        if (clickCount >= level.costInClick) {
+            levelBtn.disabled = false;
+            levelBtn.classList.remove("opacity-50");
+            levelBtn.classList.add("bg-blue-500", "p-2", "text-white", "rounded-lg");
+        } else {
+            levelBtn.disabled = true;
+            levelBtn.classList.remove("bg-blue-500", "p-2");
+            levelBtn.classList.add(
+                "opacity-50",
+                "text-white",
+                "rounded-lg",
+                "bg-blue-500",
+                "p-2"
+            );
+        }
     });
 
-// Affiche les niveaux dans le DOM
-function displayLevels() {
-    levelsContainer.innerHTML = '';
-
-    levelsData.forEach(level => {
-        const levelBtn = document.createElement('button');
-        levelBtn.innerText = `${level.label} (Coût: ${level.costInClick})`;
-        levelBtn.classList.add('bg-blue-500', 'text-white', 'p-2', 'm-2', 'rounded');
-
-        levelBtn.addEventListener('click', () => {
-            if (clickCount >= level.costInClick) {
-                clickCount -= level.costInClick;
-                clickCountEl.innerText = clickCount;
-
-                clickRate += level.ratepersecond;
-                clickRateEl.innerText = clickRate;
-
-                level.costInClick = Math.ceil(level.costInClick * 1.5);
-                levelBtn.innerText = `${level.label} (Coût: ${level.costInClick})`;
-
-                setInterval(() => {
-                    clickCount += clickRate;
-                    clickCountEl.innerText = clickCount;
-                }, 1000);
-            }
-        });
-
-        levelsContainer.appendChild(levelBtn);
-    });
-}
-
-// Incrémente le compteur de clics et met à jour le DOM
-clickerBtn.addEventListener('click', () => {
-    clickCount++;
-    clickCountEl.innerText = clickCount;
-});
-
-// Vérifie si des données sont stockées en local storage et les utilise si c'est le cas
-if (localStorage.getItem('clickCount')) {
-    clickCount = parseInt(localStorage.getItem('clickCount'));
-    clickCountEl.innerText = clickCount;
-}
-
-if (localStorage.getItem('clickRate')) {
-    clickRate = parseInt(localStorage.getItem('clickRate'));
-    clickRateEl.innerText = clickRate;
-}
-
-// Sauvegarde les données en local storage à chaque seconde
-setInterval(() => {
+// Sauvegarde des valeurs dans localStorage
     localStorage.setItem('clickCount', clickCount);
     localStorage.setItem('clickRate', clickRate);
-}, 1000);
+}
+
+// Fonction pour ajouter un clic
+function addClick() {
+    clickCount++;
+    updateDisplay();
+}
+
+// Fonction pour acheter un niveau
+function buyLevel(level) {
+    if (clickCount >= level.costInClick) {
+        clickCount -= level.costInClick;
+        clickRate += level.ratepersecond;
+        level.count++; // incrémenter le nombre de fois que le niveau a été acheté
+        level.costInClick *= 2; // doubler le coût en clic
+        const levelBtn = document.getElementById(`level-${level.id}`);
+        levelBtn.textContent = `${level.label} (${level.ratepersecond}/s) - ${level.costInClick} clicks`;
+        // mettre à jour le texte du bouton avec le nouveau coût en clic
+        updateDisplay();
+    }
+}
+
+// Fonction pour initialiser le jeu
+function init() {
+// Chargement des niveaux à partir du fichier JSON
+    fetch("level.json")
+        .then((response) => response.json())
+        .then((data) => {
+            levels = data;
+            // Création des boutons de niveau
+            levels.forEach((level) => {
+                const levelBtn = document.createElement("button");
+                levelBtn.textContent = `${level.label} (${level.ratepersecond}/s) - ${level.costInClick} clicks`;
+                levelBtn.disabled = true;
+                levelBtn.id = `level-${level.id}`;
+                levelBtn.addEventListener("click", () => buyLevel(level));
+                levelBtn.classList.add("opacity-50");
+                levelsContainer.appendChild(levelBtn);
+            });
+        });
+// Écouteur d'événement pour le bouton de clic
+    clickerBtn.addEventListener("click", addClick);
+    // Écouteur d'événement pour le bouton de réinitialisation
+    resetBtn.addEventListener("click", () => {
+        // Réinitialiser les variables de jeu
+        clickCount = 0;
+        clickRate = 0;
+        levels.forEach((level) => {
+            level.count = 0;
+            level.costInClick = level.initialCost;
+            const levelBtn = document.getElementById(`level-${level.id}`);
+            levelBtn.textContent = `${level.label} (${level.ratepersecond}/s) - ${level.costInClick} clicks`;
+        });
+
+        // Réinitialiser l'affichage
+        updateDisplay();
+    });
+
+    // Chargement des données depuis localStorage s'il y en a
+    if (localStorage.getItem("clickCount")) {
+        clickCount = parseInt(localStorage.getItem("clickCount"));
+    }
+    if (localStorage.getItem("clickRate")) {
+        clickRate = parseInt(localStorage.getItem("clickRate"));
+    }
+
+    // Début de la boucle de jeu
+    setInterval(() => {
+        clickCount += clickRate;
+        updateDisplay();
+    }, 1000);
+
+    // Mise à jour de l'affichage initial
+    updateDisplay();
+}
+
+// Initialisation du jeu lorsque la page est chargée
+document.addEventListener("DOMContentLoaded", init);

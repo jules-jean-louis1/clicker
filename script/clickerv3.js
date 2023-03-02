@@ -5,11 +5,20 @@ const resetBtn = document.getElementById("reset-btn");
 const clickRateEl = document.getElementById("click-rate");
 const levelsContainer = document.getElementById("levels-container");
 
+
+
 // Variables de jeu
 let clickCount = 0;
 let clickRate = 0;
 let clickInterval;
 let levels = [];
+// Stockage des données dans le local storage
+localStorage.setItem('clickCount', clickCount);
+localStorage.setItem('clickRate', clickRate);
+
+// Récupération des données du local storage
+clickCount = parseInt(localStorage.getItem('clickCount')) || 0;
+clickRate = parseInt(localStorage.getItem('clickRate')) || 0;
 
 // Fonction pour mettre à jour l'affichage
 function updateDisplay() {
@@ -17,7 +26,7 @@ function updateDisplay() {
     clickCountEl.textContent = clickCount;
 
     // Mise à jour du taux de clics par seconde
-    clickRateEl.textContent = clickRate.toFixed(2);
+    clickRateEl.textContent = Math.floor(clickRate);
 
     // Mise à jour des boutons de niveau
     levels.forEach((level) => {
