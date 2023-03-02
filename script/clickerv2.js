@@ -14,7 +14,7 @@ let levels = [];
 // Fonction pour mettre à jour l'affichage
 function updateDisplay() {
 // Mise à jour du nombre de clics
-    clickCountEl.textContent = clickCount;
+    clickCountEl.textContent = Math.floor(clickCount);
 
 // Mise à jour du taux de clics par seconde
     clickRateEl.textContent = Math.floor(clickRate);
@@ -29,19 +29,14 @@ function updateDisplay() {
         } else {
             levelBtn.disabled = true;
             levelBtn.classList.remove("bg-blue-500", "p-2");
-            levelBtn.classList.add(
-                "opacity-50",
-                "text-white",
-                "rounded-lg",
-                "bg-blue-500",
-                "p-2"
-            );
+            levelBtn.classList.add("opacity-50", "text-white", "rounded-lg", "bg-blue-500", "p-2");
         }
     });
 
 // Sauvegarde des valeurs dans localStorage
     localStorage.setItem('clickCount', clickCount);
     localStorage.setItem('clickRate', clickRate);
+
 }
 
 // Fonction pour ajouter un clic
@@ -56,7 +51,7 @@ function buyLevel(level) {
         clickCount -= level.costInClick;
         clickRate += level.ratepersecond;
         level.count++; // incrémenter le nombre de fois que le niveau a été acheté
-        level.costInClick *= 2; // doubler le coût en clic
+        level.costInClick = Math.round(level.costInClick * 1.2);// doubler le coût en clic
         const levelBtn = document.getElementById(`level-${level.id}`);
         levelBtn.textContent = `${level.label} (${level.ratepersecond}/s) - ${level.costInClick} clicks`;
         // mettre à jour le texte du bouton avec le nouveau coût en clic
@@ -73,13 +68,23 @@ function init() {
             levels = data;
             // Création des boutons de niveau
             levels.forEach((level) => {
+                const divBtn =document.createElement("div");
                 const levelBtn = document.createElement("button");
-                levelBtn.textContent = `${level.label} (${level.ratepersecond}/s) - ${level.costInClick} clicks`;
+                const levelBtnLabel = document.createElement("h2");
+                const levelBtnCost = document.createElement("p");
+
+                divBtn.classList.add("w-1/4", "px-2", "w-1/3", "mb-4");
+                levelBtnLabel.textContent = level.label;
+                levelBtnCost.textContent = `${level.costInClick}`;
+                levelBtn.textContent = `(${level.ratepersecond}/s)`;
                 levelBtn.disabled = true;
                 levelBtn.id = `level-${level.id}`;
                 levelBtn.addEventListener("click", () => buyLevel(level));
                 levelBtn.classList.add("opacity-50");
-                levelsContainer.appendChild(levelBtn);
+                levelsContainer.appendChild(divBtn);
+                divBtn.appendChild(levelBtn);
+                levelBtn.appendChild(levelBtnLabel);
+                levelBtn.appendChild(levelBtnCost);
             });
         });
 // Écouteur d'événement pour le bouton de clic

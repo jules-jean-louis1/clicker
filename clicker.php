@@ -38,11 +38,11 @@ session_start();
                         <button id="reset-btn" class="p-2 rounded-lg bg-red-500">Reset</button>
 
                     </div>
-                    <div id="shop" class="flex flex-col justify-center">
+                    <div id="shop" class="flex flex-col justify-center items-center">
                         <h2>
                             <span class="flex justify-center">Level</span>
                         </h2>
-                        <div id="levels-container"></div>
+                        <div id="levels-container" class="w-full flex flex-wrap justify-center"></div>
                     </div>
                 </div>
             </section>

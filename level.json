@@ -7,6 +7,6 @@
   {"id": 5, "label": "Giga Clicker", "ratepersecond": 1000, "costInClick": 100000},
   {"id": 6, "label": "Extraordinary Clicker", "ratepersecond": 6000, "costInClick": 500000},
   {"id": 7, "label": "Antépénultième Clicker", "ratepersecond": 50000, "costInClick": 10000000},
-  {"id": 8, "label": "Penultimate Clicker", "ratepersecond": 70000, "costInClick": 15000000},
+  {"id": 8, "label": "Pénultième Clicker", "ratepersecond": 70000, "costInClick": 15000000},
   {"id": 9, "label": "Un Clicker pour tous les dominés", "ratepersecond": 1000000, "costInClick": 250000000}
 ]

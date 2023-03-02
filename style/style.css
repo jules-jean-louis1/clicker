@@ -7,6 +7,9 @@
     box-sizing: border-box;
     font-family: 'Quicksand', sans-serif;
 }
+body{
+    background: #F0F1F3;
+}
 
 /* Message */
 .alert-success {
@@ -24,4 +27,139 @@
     box-shadow: 0 0 transparent;
     padding: 5px;
     border-radius: 5px;
+}
+
+/* Level */
+#levels-container {
+    color: #183153;
+}
+#level-0 {
+    background: #74C0FC;
+    border: 0.125em solid #146EBE;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #146EBE;
+}
+#level-0:hover {
+    transition: 0.3s ease-out;
+    background: #146EBE;
+    border: 0.150em solid #146EBE;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #146EBE;
+}
+#level-1 {
+    background: #E599F7;
+    border: 0.125em solid #9C36B5;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #9C36B5;
+}
+#level-1:hover {
+    transition: 0.3s ease-out;
+    background: #9C36B5;
+    border: 0.150em solid #9C36B5;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #9C36B5;
+}
+#level-2 {
+    background: #FFBDD3;
+    border: 0.125em solid #E64980;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #E64980;
+}
+#level-2:hover {
+    transition: 0.3s ease-out;
+    background: #E64980;
+    border: 0.150em solid #E64980;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #E64980;
+}
+#level-3 {
+    background: #FFD580;
+    border: 0.125em solid #D9822B;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #D9822B;
+}
+#level-3:hover {
+    transition: 0.3s ease-out;
+    background: #D9822B;
+    border: 0.150em solid #D9822B;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #D9822B;
+}
+#level-4 {
+    background: #FF9F80;
+    border: 0.125em solid #E64942;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #E64942;
+}
+#level-4:hover {
+    transition: 0.3s ease-out;
+    background: #E64942;
+    border: 0.150em solid #E64942;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #E64942;
+}
+#level-5 {
+    background: #63E6BE;
+    border: 0.125em solid #0CA678;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #0CA678;
+}
+#level-5:hover {
+    transition: 0.3s ease-out;
+    background: #0CA678;
+    border: 0.150em solid #0CA678;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #0CA678;
+}
+#level-6 {
+    background: #B197FC;
+    border: 0.125em solid #6741D9;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #6741D9;
+}
+#level-6:hover {
+    transition: 0.3s ease-out;
+    background: #6741D9;
+    border: 0.150em solid #6741D9;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #6741D9;
+}
+#level-7 {
+    background: #C3C6D1;
+    border: 0.125em solid #7E8A9F;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #7E8A9F;
+}
+#level-7:hover {
+    transition: 0.3s ease-out;
+    background: #7E8A9F;
+    border: 0.150em solid #7E8A9F;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #7E8A9F;
+}
+#level-8 {
+    background: #74C0FC;
+    border: 0.125em solid #146EBE;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #146EBE;
+}
+#level-8:hover {
+    transition: 0.3s ease-out;
+    background: #146EBE;
+    border: 0.150em solid #146EBE;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #146EBE;
+}
+#level-9 {
+    background: #E599F7;
+    border: 0.125em solid #9C36B5;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #9C36B5;
+}
+#level-9:hover {
+    transition: 0.3s ease-out;
+    background: #9C36B5;
+    border: 0.150em solid #9C36B5;
+    border-radius: 0.5em;
+    box-shadow: 0 0.375em 0 #9C36B5;
 }
