@@ -1,7 +1,7 @@
 <?php
 ?>
 
-<header class="bg-[#fff] border-b-[1px] border-[#ececec]">
+<header class="bg-[#0e1217] border-b-[1px] border-[#ececec]">
     <div id="containerNav" class="flex justify-between mx-8 p-3 font-semibold">
         <div id="logohere" class="flex items-center">
             <a href="index.php">
@@ -31,36 +31,13 @@
             </a>
         </div>
         <div id="navhere">
-            <?php if (isset($_SESSION['login']) != null) : ?>
-            <nav>
-                <ul class="flex space-x-2 items-center">
-                    <li>
-                        <a href="clicker.php">Clicker</a>
-                    </li>
-                    <li class="flex space-x-2 items-center bg-[#8900C2] rounded-lg p-2 text-[#fff]">
-                        <i class="fa-regular fa-circle-user"></i>
-                        <a href="contact.php"><?= $_SESSION['login']?></a>
-                    </li>
-                    <li>
-                        <a href="disconnect.php" class="border-[1.5px] border-[#8900C2] bg-[#8900C213] hover:bg-[#8900C24C] rounded-lg p-2">Deconnexion</a>
-                    </li>
-                </ul>
-            </nav>
-            <?php else : ?>
             <nav>
                 <ul class="flex space-x-2">
                     <li>
                         <a href="clicker.php">Clicker</a>
                     </li>
-                    <li>
-                        <a href="login.php">Connexion</a>
-                    </li>
-                    <li>
-                        <a href="register.php">Inscription</a>
-                    </li>
                 </ul>
             </nav>
-            <?php endif; ?>
         </div>
     </div>
 </header>

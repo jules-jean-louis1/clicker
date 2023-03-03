@@ -25,13 +25,15 @@ session_start();
             <section class="flex justify-center lg:mx-8">
                 <div class="container lg:pt-[4%]">
                     <div class="flex justify-center">
-                        <h1>Clicker Game</h1>
+                        <h1>
+                            <span class="text-[#a8b3cf] font-bold text-4xl">Clicker Game</span>
+                        </h1>
                     </div>
                     <div class="flex flex-col justify-center space-y-3">
                         <h2>
                             <span id="click-count" class="flex justify-center text-red-600 font-bold text-4xl">0</span>
                         </h2>
-                        <h2>
+                        <h2 class="text-[#a8b3cf] flex justify-center">
                             Clicks par secondes : <span id="click-rate">0</span>
                         </h2>
                         <button id="clicker-btn" class="p-2 rounded-lg bg-purple-500 uppercase font-bold text-2xl text-[#fff]">Clicker Ici!</button>

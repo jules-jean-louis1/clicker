@@ -25,11 +25,9 @@ function updateDisplay() {
         if (clickCount >= level.costInClick) {
             levelBtn.disabled = false;
             levelBtn.classList.remove("opacity-50");
-            levelBtn.classList.add("bg-blue-500", "p-2", "text-white", "rounded-lg");
         } else {
             levelBtn.disabled = true;
-            levelBtn.classList.remove("bg-blue-500", "p-2");
-            levelBtn.classList.add("opacity-50", "text-white", "rounded-lg", "bg-blue-500", "p-2");
+            levelBtn.classList.add("opacity-50");
         }
     });
 
@@ -73,7 +71,8 @@ function init() {
                 const levelBtnLabel = document.createElement("h2");
                 const levelBtnCost = document.createElement("p");
 
-                divBtn.classList.add("w-1/4", "px-2", "w-1/3", "mb-4");
+                divBtn.classList.add("w-1/4", "px-2", "mb-4");
+                levelBtn.classList.add("text-white", "py-2", "px-4", "rounded", "w-full");
                 levelBtnLabel.textContent = level.label;
                 levelBtnCost.textContent = `${level.costInClick}`;
                 levelBtn.textContent = `(${level.ratepersecond}/s)`;
