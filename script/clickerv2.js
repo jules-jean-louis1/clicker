@@ -41,8 +41,9 @@ function updateDisplay() {
 
 }
 function updateTitle() {
-    document.title = `Clics: ${Math.floor(clickCount)}`;
+    document.title = Math.floor(clickCount);
 }
+setInterval(updateTitle, 100);
 // Fonction pour ajouter un clic
 function addClick() {
     clickCount++;
