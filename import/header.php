@@ -34,7 +34,7 @@
             <nav>
                 <ul class="flex space-x-2">
                     <li>
-                        <a href="clicker.php">Clicker</a>
+                        <a href="../index.php">Clicker</a>
                     </li>
                 </ul>
             </nav>

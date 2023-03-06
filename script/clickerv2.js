@@ -29,17 +29,24 @@ function updateDisplay() {
             levelBtn.disabled = true;
             levelBtn.classList.add("opacity-50");
         }
+        // Enregistrement du prix du niveau dans le localStorage
+        localStorage.setItem(`level-${level.id}-cost`, level.costInClick);
     });
 
 // Sauvegarde des valeurs dans localStorage
     localStorage.setItem('clickCount', clickCount);
     localStorage.setItem('clickRate', clickRate);
 
-}
 
+
+}
+function updateTitle() {
+    document.title = `Clics: ${Math.floor(clickCount)}`;
+}
 // Fonction pour ajouter un clic
 function addClick() {
     clickCount++;
+    updateTitle();
     updateDisplay();
 }
 
@@ -98,6 +105,7 @@ function init() {
             level.costInClick = level.initialCost;
             const levelBtn = document.getElementById(`level-${level.id}`);
             levelBtn.textContent = `${level.label} (${level.ratepersecond}/s) - ${level.costInClick} clicks`;
+            localStorage.setItem(`level-${level.id}-cost`, level.costInClick); // Réinitialiser les coûts des niveaux dans le localStorage
         });
 
         // Réinitialiser l'affichage
@@ -114,9 +122,9 @@ function init() {
 
     // Début de la boucle de jeu
     setInterval(() => {
-        clickCount += clickRate;
+        clickCount += clickRate * 0.1; // multiplier le taux de clics par seconde par 0.1 pour un intervalle de 100 millisecondes
         updateDisplay();
-    }, 1000);
+    }, 100);
 
     // Mise à jour de l'affichage initial
     updateDisplay();

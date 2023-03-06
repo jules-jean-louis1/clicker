@@ -16,7 +16,7 @@ session_start();
 <!--    <script defer src="script/clicker.js"></script>-->
     <script defer src="script/clickerv2.js"></script>
     <script src="https://kit.fontawesome.com/8b26d30613.js" crossorigin="anonymous"></script>
-    <title>Clicker</title>
+    <title> - Clicker</title>
 </head>
 <body>
 <?php include 'import/header.php'; ?>
